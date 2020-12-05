@@ -1,6 +1,6 @@
-import inputArr from './inputs/1';
+import inputArr from '../inputs/1';
 
-function solvePuzzle() {
+export default function solvePuzzle() {
   const numbersToLookFor = new Set();
 
   for (let i = 0; i < inputArr.length; ++i) {
@@ -14,6 +14,3 @@ function solvePuzzle() {
 
   console.log(numbersToLookFor);
 }
-
-const node = document.querySelector('ol').children[0];
-node.innerHTML = solvePuzzle();

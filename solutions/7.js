@@ -7,8 +7,6 @@ export default function solvePuzzle() {
     map[color] = contents;
   }
 
-  console.log(map);
-
   return [getBagsContainingGoldBag(), getBagCount('shiny gold')];
 
   function getBagsContainingGoldBag() {

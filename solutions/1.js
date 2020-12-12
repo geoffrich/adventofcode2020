@@ -11,7 +11,6 @@ function getTwoEntries(goal) {
     const num = inputArr[i];
     const distanceFromGoal = goal - num;
     if (numbersToLookFor.has(num)) {
-      console.log(numbersToLookFor);
       return num * distanceFromGoal;
     }
     numbersToLookFor.add(distanceFromGoal);

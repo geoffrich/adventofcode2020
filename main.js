@@ -4,8 +4,9 @@ import solve3 from './solutions/3';
 import solve4 from './solutions/4';
 import solve5 from './solutions/5';
 import solve6 from './solutions/6';
+import solve7 from './solutions/7';
 
-const solvers = [solve1, solve2, solve3, solve4, solve5, solve6];
+const solvers = [solve1, solve2, solve3, solve4, solve5, solve6, solve7];
 const list = document.querySelector('ol');
 
 for (let i = 0; i < solvers.length; i++) {

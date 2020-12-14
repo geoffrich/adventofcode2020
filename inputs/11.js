@@ -11,7 +11,7 @@ export const testInput = [
   'L.LLLLL.LL'
 ];
 
-export const testInput2 = ['LLL', 'L..', '..L'];
+export const testInput2 = ['LLLLL', 'L..LL', '..LLL'];
 
 export const finalInput = [
   'LLLLL.L.LLLLLLL.LL.LLLLL.LLLLLLL..LLLLL.LLLLL.L..LLLLL..LLLLLLLL.LLLL.LLL.LLLLLLL.LLLLLLLLLL',

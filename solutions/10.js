@@ -9,7 +9,6 @@ export default function solvePuzzle() {
   const sorted = inputArr.sort((a, b) => a - b);
   sorted.push(sorted[sorted.length - 1] + 3);
   sorted.unshift(0);
-  console.log(sorted);
 
   function getDifferences() {
     const differences = [0, 0, 0];
@@ -33,8 +32,6 @@ export default function solvePuzzle() {
       if (sorted[i] === sorted[i - 1] + 1) {
         groupSize++;
       } else {
-        console.log(groupSize, sorted.slice(i - groupSize, i));
-
         if (groupSize > 2) {
           if (groupSize === 3) {
             permutations *= 2;

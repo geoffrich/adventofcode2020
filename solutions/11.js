@@ -63,7 +63,6 @@ function solvePart2() {
 
   for (let i = 0; i < 100; i++) {
     if (!changed) {
-      console.log(`broke after ${i} iterations`);
       break;
     }
     changed = false;

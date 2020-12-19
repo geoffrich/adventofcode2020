@@ -13,6 +13,7 @@ import solve12 from './solutions/12';
 import solve13 from './solutions/13';
 import solve14 from './solutions/14';
 import solve15 from './solutions/15';
+import solve16 from './solutions/16';
 
 const solvers = [
   // solve1,
@@ -29,7 +30,8 @@ const solvers = [
   // solve12,
   // solve13,
   // solve14,
-  solve15
+  // solve15,
+  solve16
 ];
 const list = document.querySelector('ol');
 

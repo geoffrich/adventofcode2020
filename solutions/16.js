@@ -1,30 +1,82 @@
-import { testInput, finalInput as inputArr } from '../inputs/16';
+import { testInput2, finalInput as inputArr } from '../inputs/16';
 
 export default function solvePuzzle() {
   let state = 'rules';
   const rules = {};
   let myTicket;
-  const nearby = [];
+  const nearbyTickets = [];
   parseInput();
 
   let invalidSum = 0;
-  for (const ticket of nearby) {
+  const validTickets = [];
+  for (const ticket of nearbyTickets) {
+    let valid = true;
     for (const val of ticket) {
-      if (!isValid(val)) {
+      if (getValidRules(val).length === 0) {
         invalidSum += val;
+        valid = false;
+      }
+    }
+    if (valid) {
+      validTickets.push(ticket);
+    }
+  }
+
+  console.log(validTickets);
+
+  const ruleMatches = [];
+
+  for (let i = 0; i < validTickets[0].length; i++) {
+    let possibleRules = new Set(Object.keys(rules));
+    for (const ticket of validTickets) {
+      const matchingRules = getValidRules(ticket[i]);
+      possibleRules = new Set(
+        [...possibleRules].filter((x) => matchingRules.includes(x))
+      );
+    }
+    ruleMatches.push(possibleRules);
+  }
+
+  const determinedRules = new Set();
+  const ruleMappings = [];
+
+  let iter = 0;
+  while (determinedRules.size < Object.keys(rules).length) {
+    iter++;
+    if (iter > 300) {
+      console.log('breaking');
+      break;
+    }
+
+    for (let i = 0; i < ruleMatches.length; i++) {
+      ruleMatches[i] = new Set(
+        [...ruleMatches[i]].filter((x) => !determinedRules.has(x))
+      );
+      if (ruleMatches[i].size === 1) {
+        const rule = ruleMatches[i].values().next().value;
+        determinedRules.add(rule);
+        ruleMappings[i] = rule;
       }
     }
   }
 
-  return invalidSum;
+  let product = 1;
+  for (let i = 0; i < ruleMappings.length; i++) {
+    if (ruleMappings[i].includes('departure')) {
+      product *= myTicket[i];
+    }
+  }
 
-  function isValid(val) {
-    for (const [low1, high1, low2, high2] of Object.values(rules)) {
+  return [invalidSum, product];
+
+  function getValidRules(val) {
+    const matchingRules = [];
+    for (const [rule, [low1, high1, low2, high2]] of Object.entries(rules)) {
       if ((val >= low1 && val <= high1) || (val >= low2 && val <= high2)) {
-        return true;
+        matchingRules.push(rule);
       }
     }
-    return false;
+    return matchingRules;
   }
 
   function parseInput() {
@@ -44,7 +96,7 @@ export default function solvePuzzle() {
         myTicket = line.split(',');
       } else {
         if (line.includes('nearby')) continue;
-        nearby.push(line.split(',').map((x) => +x));
+        nearbyTickets.push(line.split(',').map((x) => +x));
       }
     }
   }

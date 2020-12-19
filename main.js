@@ -9,19 +9,25 @@ import solve8 from './solutions/8';
 import solve9 from './solutions/9';
 import solve10 from './solutions/10';
 import solve11 from './solutions/11';
+import solve12 from './solutions/12';
+import solve13 from './solutions/13';
+import solve14 from './solutions/14';
 
 const solvers = [
-  solve1,
-  solve2,
-  solve3,
-  solve4,
-  solve5,
-  solve6,
-  solve7,
-  solve8,
-  solve9,
-  solve10,
-  solve11
+  // solve1,
+  // solve2,
+  // solve3,
+  // solve4,
+  // solve5,
+  // solve6,
+  // solve7,
+  // solve8,
+  // solve9,
+  // solve10,
+  // solve11,
+  // solve12,
+  // solve13,
+  solve14
 ];
 const list = document.querySelector('ol');
 
